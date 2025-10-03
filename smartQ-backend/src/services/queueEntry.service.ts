@@ -51,3 +51,14 @@ export const updateEntryStatus = async (entry_id: string, status: queueEntryStat
   await entryRepo.update(entry_id, { status });
   return entryRepo.findOne({ where: { entry_id }, relations: ["user"] });
 };
+
+export const isUserJoined = async (queue_id: string, user_id) => {
+
+  return await entryRepo.findOne({
+    where: {
+      queue: {queue_id: queue_id},
+      user: {user_id: user_id},
+      status: queueEntryStatus.WAITING
+    }
+  });
+}

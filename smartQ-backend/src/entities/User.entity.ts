@@ -8,6 +8,7 @@ import {
 import { QueueEntry } from "./QueueEntry.entity";
 
 export enum UserRole {
+  ADMIN = "admin",
   USER = "user",
   SERVICE_PROVIDER = "service provider",
 }

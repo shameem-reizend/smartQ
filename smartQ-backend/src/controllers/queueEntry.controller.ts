@@ -1,9 +1,16 @@
 import { Request, Response, NextFunction } from "express";
-import { joinQueue, getQueueEntries, updateEntryStatus } from "../services/queueEntry.service";
+import { joinQueue, getQueueEntries, updateEntryStatus, isUserJoined } from "../services/queueEntry.service";
+import { AuthRequest } from "../middlewares/auth.middleware";
+import { ApiError } from "../utils/apiError";
 
-export const joinQueueHandler = async (req: Request, res: Response, next: NextFunction) => {
+export const joinQueueHandler = async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
-    const entry = await joinQueue(req.params.id, req.body.user_id);
+    const exists = await isUserJoined(req.params.id, req.user.id)
+    if(exists){
+      throw new ApiError("You are already in this queue", 409);
+    }
+
+    const entry = await joinQueue(req.params.id, req.user.id);
     res.status(201).json({
       success: true,
       message: "Queue entry successfully created",

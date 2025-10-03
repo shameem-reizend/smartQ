@@ -17,8 +17,8 @@ const UserQueues: React.FC = () => {
 
   useEffect(() => {
     fetchQueues();
-    const interval = setInterval(fetchQueues, 10000);
-    return () => clearInterval(interval);
+    // const interval = setInterval(fetchQueues, 10000);
+    // return () => clearInterval(interval);
   }, []);
 
   const fetchQueues = async () => {

@@ -21,6 +21,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsloading] = useState(true);
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -29,6 +30,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setUser(JSON.parse(storedUser));
       setIsAuthenticated(true);
     }
+    setIsloading(false);
   }, []);
 
   const login = async (email: string, password: string) => {
@@ -61,6 +63,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   }) => {
     await authService.register(data);
   };
+
+  if(isLoading){
+    return <div>Loading...</div>
+  }
 
   return (
     <AuthContext.Provider value={{ user, isAuthenticated, login, logout, register }}>

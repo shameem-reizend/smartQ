@@ -20,7 +20,7 @@ const Dashboard: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <h1 className="text-2xl font-bold text-gray-800">SmartQ</h1>
           <div className="flex items-center gap-4">
-            <div className="text-right">
+            <div className="text-left">
               <p className="font-semibold text-gray-800 capitalize">{user?.name}</p>
               <p className="text-sm text-gray-600">{user?.role}</p>
             </div>
@@ -90,11 +90,11 @@ const Dashboard: React.FC = () => {
             <ul className="space-y-2 text-gray-700">
               <li className="flex items-center gap-2">
                 <span className="text-blue-600">•</span>
-                Browse available queues in the "Join Queues\" section
+                Browse available queues in the "Join Queues" section
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-blue-600">•</span>
-                Click "Join Queue\" to add yourself to a queue
+                Click "Join Queue" to add yourself to a queue
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-blue-600">•</span>

@@ -96,7 +96,7 @@ const QueueDetails: React.FC = () => {
 
   const isProvider = user?.role === 'service provider' || user?.role === 'admin';
 
-  const myEntry = entries?.find((entry) => entry.user?.user_id === user?.user_id);
+  const myEntry = entries?.find((entry) => entry.user?.user_id === user?.user_id && entry.status === 'waiting');
 
   return (
     <div className="max-w-6xl mx-auto p-6">
