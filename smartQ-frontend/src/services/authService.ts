@@ -9,7 +9,7 @@ export const authService = {
     role?: string;
     phone?: string;
   }): Promise<RegisterResponse> {
-    const response = await api.post<RegisterResponse>('/admin/users/', data);
+    const response = await api.post<RegisterResponse>('/users/', data);
     return response.data;
   },
 
@@ -22,7 +22,7 @@ export const authService = {
   },
 
   async fetchUsers() {
-    const response = await api.get('/users/');
+    const response = await api.get('/admin/users/');
     return response.data;
   },
 };
