@@ -22,7 +22,7 @@ export const authService = {
   },
 
   async fetchCurrentUser() {
-    const response = await api.get('/current-user/');
+    const response = await api.get('/users/current-user/');
     return response.data;
   },
 
