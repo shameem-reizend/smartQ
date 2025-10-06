@@ -37,8 +37,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const response = await authService.login(email, password);
     localStorage.setItem('accessToken', response.accessToken);
 
-    const usersResponse = await authService.fetchUsers();
-    const currentUser = usersResponse.users.find((u: User) => u.email === email);
+    const usersResponse = await authService.fetchCurrentUser();
+    const currentUser = usersResponse.user;
 
     if (currentUser) {
       localStorage.setItem('user', JSON.stringify(currentUser));

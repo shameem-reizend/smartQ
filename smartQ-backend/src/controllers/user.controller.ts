@@ -4,6 +4,8 @@ import { ApiError } from "../utils/apiError";
 import { generateAccessToken } from "../utils/token";
 import bcrypt from "bcrypt";
 import { UserRole } from "../entities/User.entity";
+import { AuthRequest } from "../middlewares/auth.middleware";
+import { instanceToPlain } from "class-transformer";
 
 export const registerUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -64,3 +66,20 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     next(error);
   }
 };
+
+export const fetchCurrentUser = async (req: AuthRequest, res: Response, next: NextFunction) => {
+  try {
+    const email = req.user.email;
+    const user = await findUserByEmail(email);
+    if(!user){
+      throw new ApiError('user not found', 404);
+    }
+    res.status(200).json({
+      success: true,
+      message: "User fetched successfully",
+      user: instanceToPlain(user)
+    })
+  } catch (error) {
+    next(error)
+  }
+}

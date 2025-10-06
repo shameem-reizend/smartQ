@@ -21,6 +21,11 @@ export const authService = {
     return response.data;
   },
 
+  async fetchCurrentUser() {
+    const response = await api.get('/current-user/');
+    return response.data;
+  },
+
   async fetchUsers() {
     const response = await api.get('/admin/users/');
     return response.data;
