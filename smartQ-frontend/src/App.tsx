@@ -8,6 +8,7 @@ import ServiceDashboard from './pages/ServiceDashboard';
 import QueueManagement from './pages/QueueManagement';
 import UserQueues from './pages/UserQueues';
 import QueueDetails from './pages/QueueDetails';
+import ServiceDetails from './pages/ServiceDetails';
 
 function App() {
   return (
@@ -29,6 +30,14 @@ function App() {
             element={
               <ProtectedRoute requireProvider>
                 <ServiceDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/services/:serviceId"
+            element={
+              <ProtectedRoute requireProvider>
+                <ServiceDetails />
               </ProtectedRoute>
             }
           />

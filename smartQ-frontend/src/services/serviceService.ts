@@ -15,4 +15,11 @@ export const serviceService = {
     const response = await api.get('/services/');
     return response.data.services;
   },
+
+  async fetchServiceDetails(serviceId: string): Promise<Service> {
+    console.log(serviceId)
+    const response = await api.get(`/services/${serviceId}`);
+    console.log("ee", response)
+    return response.data.service;
+  }
 };

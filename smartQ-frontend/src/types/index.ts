@@ -25,6 +25,9 @@ export interface Service {
   description?: string;
   provider_id: string;
   created_at: string;
+  location: string;
+  queues: Queue[];
+  provider: User;
 }
 
 export interface Queue {
