@@ -5,6 +5,6 @@ import { UserRole } from '../entities/User.entity';
 
 const adminRoutes = express.Router();
 
-adminRoutes.get("/", authenticate, authorize(UserRole.ADMIN), fetchAllUsers);
+adminRoutes.get("/users", authenticate, authorize(UserRole.ADMIN, UserRole.SERVICE_PROVIDER), fetchAllUsers);
 
 export default adminRoutes;

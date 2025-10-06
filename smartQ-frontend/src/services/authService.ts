@@ -9,7 +9,7 @@ export const authService = {
     role?: string;
     phone?: string;
   }): Promise<RegisterResponse> {
-    const response = await api.post<RegisterResponse>('/users/', data);
+    const response = await api.post<RegisterResponse>('/admin/users/', data);
     return response.data;
   },
 
