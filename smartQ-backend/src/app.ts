@@ -7,6 +7,7 @@ import userRoutes from "./routes/user.routes";
 import serviceRoutes from "./routes/service.routes";
 import queueRoutes from "./routes/queue.routes";
 import queueEntryRoutes from "./routes/queueEntry.routes";
+import adminRoutes from "./routes/admin.routes";
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
+app.use("/admin", adminRoutes);
 app.use("/users", userRoutes);
 app.use("/services", serviceRoutes);
 app.use("/queues", queueRoutes);

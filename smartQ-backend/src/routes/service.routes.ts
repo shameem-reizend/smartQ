@@ -7,7 +7,7 @@ const serviceRoutes = express.Router();
 serviceRoutes.use(authenticate);
 
 serviceRoutes.post("/", authorize(UserRole.SERVICE_PROVIDER), registerService);
-serviceRoutes.get("/", authorize(UserRole.SERVICE_PROVIDER), fetchAllService);
+serviceRoutes.get("/", authorize(UserRole.SERVICE_PROVIDER, UserRole.ADMIN), fetchAllService);
 serviceRoutes.get("/:id", authenticate, authorize(UserRole.SERVICE_PROVIDER), fetchServiceDetail);
 
 export default serviceRoutes;

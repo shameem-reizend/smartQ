@@ -225,6 +225,7 @@ const UserQueues: React.FC = () => {
                         View Details
                         <ChevronRight size={16} className="group-hover/view:translate-x-1 transition-transform" />
                       </button>
+                      {user?.role == 'user' && 
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
@@ -242,6 +243,7 @@ const UserQueues: React.FC = () => {
                           'Join Queue'
                         )}
                       </button>
+                      }
                     </div>
                   </div>
                 </div>

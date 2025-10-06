@@ -6,6 +6,7 @@ import {
   OneToMany,
 } from "typeorm";
 import { QueueEntry } from "./QueueEntry.entity";
+import { Exclude } from "class-transformer";
 
 export enum UserRole {
   ADMIN = "admin",
@@ -28,6 +29,7 @@ export class User {
   phone?: string;
 
   @Column()
+  @Exclude()
   password: string;
 
   @Column({ type: "enum", enum: UserRole, default: UserRole.USER })

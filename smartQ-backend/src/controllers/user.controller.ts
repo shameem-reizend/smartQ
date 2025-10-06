@@ -64,16 +64,3 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     next(error);
   }
 };
-
-export const fetchAllUsers = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const users = await getAllUsers();
-    res.status(200).json({
-      success: true,
-      message: "Users successfully fetched",
-      users,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
