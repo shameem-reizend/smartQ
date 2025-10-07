@@ -52,7 +52,7 @@ const Dashboard: React.FC = () => {
             <span className="text-sm font-medium text-gray-600">Welcome back</span>
           </div>
           <h2 className="text-4xl font-bold text-gray-800 mb-3">
-            Hello, <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">{user?.name}</span>!
+            Hello, <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent capitalize">{user?.name}</span>!
           </h2>
           <p className="text-gray-600 text-lg">Ready to manage your queues efficiently?</p>
         </div>
