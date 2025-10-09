@@ -47,10 +47,18 @@ export const getQueueEntries = async (queue_id: string): Promise<QueueEntry[]> =
   });
 };
 
-export const updateEntryStatus = async (entry_id: string, status: queueEntryStatus): Promise<QueueEntry | null> => {
-  await entryRepo.update(entry_id, { status });
+export const updateEntryStatus = async (entry_id: string, status: queueEntryStatus ): Promise<QueueEntry | null> => {
+  const updateData: Partial<QueueEntry> = { status };
+
+  if (status === queueEntryStatus.SERVED) {
+    updateData.served_at = new Date();
+  }
+
+  await entryRepo.update(entry_id, updateData);
+
   return entryRepo.findOne({ where: { entry_id }, relations: ["user"] });
 };
+
 
 export const isUserJoined = async (queue_id: string, user_id) => {
 

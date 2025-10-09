@@ -37,4 +37,7 @@ export class QueueEntry {
 
   @CreateDateColumn()
   joined_at: Date;
+
+  @Column({ type: "timestamp", nullable: true })
+  served_at: Date;
 }
